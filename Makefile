@@ -28,7 +28,7 @@ bindir = $(exec_prefix)/bin
 exec_prefix = $(prefix)
 prefix = $(HOME)
 
-progs = grep_
+progs = grep_ ls_
 
 all: FORCE $(progs)
 
