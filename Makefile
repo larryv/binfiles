@@ -20,7 +20,10 @@
 .SUFFIXES: .m4
 SHELL = /bin/sh
 
-INSTALL = ./install-sh
+# Reduce the number of shells in play by invoking install-sh with
+# the same shell that make(1) uses.  Use "./install-sh" instead of
+# "install-sh" to preclude inadvertent PATH searches [1][2].
+INSTALL = $(SHELL) ./install-sh
 INSTALL_PROGRAM = $(INSTALL)
 M4 = m4
 
@@ -48,3 +51,10 @@ uninstall: FORCE
 	$(M4) -D __SHELL__=$(SHELL) $< >$@
 
 FORCE:
+
+
+# ----------
+# REFERENCES
+#
+#  1. https://www.gnu.org/software/autoconf/manual/autoconf-2.71/html_node/Invoking-the-Shell.html
+#  2. https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sh.html
