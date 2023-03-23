@@ -41,6 +41,7 @@ prefix = /usr/local
 # ---------------
 # INTERNAL MACROS
 
+cleanup = { rc=$$?; rm -f $@ && exit "$$rc"; }
 progs = grep_ ls_
 
 
@@ -58,8 +59,10 @@ installdirs: FORCE
 uninstall: FORCE
 	CDPATH= cd $(DESTDIR)$(bindir) && rm -f $(progs)
 
+# Portably imitate .DELETE_ON_ERROR [4] because m4(1) may fail after the
+# shell creates/truncates the target.
 .m4:
-	$(M4) -D __SHELL__=$(SHELL) $< >$@
+	$(M4) -D __SHELL__=$(SHELL) $< >$@ || $(cleanup)
 
 # Imitate .PHONY portably [5].
 FORCE:
@@ -71,4 +74,5 @@ FORCE:
 #  1. https://www.gnu.org/software/autoconf/manual/autoconf-2.71/html_node/Invoking-the-Shell.html
 #  2. https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sh.html
 #  3. https://pubs.opengroup.org/onlinepubs/9699919799/utilities/cd.html
+#  4. https://www.gnu.org/software/make/manual/html_node/Errors.html
 #  5. https://www.gnu.org/software/make/manual/html_node/Force-Targets
