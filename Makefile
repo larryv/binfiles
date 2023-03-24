@@ -29,7 +29,7 @@ M4 = m4
 
 bindir = $(exec_prefix)/bin
 exec_prefix = $(prefix)
-prefix = $(HOME)
+prefix = /usr/local
 
 progs = grep_ ls_
 
