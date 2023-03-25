@@ -32,8 +32,8 @@ divert[]dnl
 undivert(1)dnl
 
 dnl Determine which desired options are available.  Use -d to avoid
-dnl wasting time listing directory contents.  (It's safe to use -a
-dnl and -d, as they've been present since literally Version 1 Unix.)
+dnl wasting time listing directory contents.  (It's safe to assume -a
+dnl and -d, which have been present since literally Version 1 Unix.)
 define([opts],
 syscmd([ls -Ad >/dev/null 2>&1])ifelse(sysval, 0, [[A]], [[a]])dnl
 syscmd([ls -Fd >/dev/null 2>&1])ifelse(sysval, 0, [[F]])dnl
