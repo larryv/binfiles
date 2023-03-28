@@ -20,7 +20,7 @@ dnl
 dnl
 dnl
 divert[]dnl
-[#]!defn([__SHELL__]) -
+[#]!ifdef([__SHELL__], [defn([__SHELL__])], [[/bin/sh]]) -
 
 # grep_ - Run grep(1) with color output
 # -------------------------------------

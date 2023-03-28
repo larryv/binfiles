@@ -20,7 +20,7 @@ dnl
 dnl
 dnl
 divert[]dnl
-[#]!defn([__SHELL__]) -
+[#]!ifdef([__SHELL__], [defn([__SHELL__])], [[/bin/sh]]) -
 
 # ls_ - Run ls(1) with default options
 # ------------------------------------
