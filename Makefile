@@ -26,11 +26,15 @@
 # Hard-coded into the shebangs of shell scripts.
 SHELL = /bin/sh
 
+# Hard-coded into grep_.
+GREP = grep
 # Reduce the number of shells in play by invoking install-sh with
 # the same shell that make(1) uses.  Use "./install-sh" instead of
 # "install-sh" to preclude inadvertent PATH searches [1][2].
 INSTALL = $(SHELL) ./install-sh
 INSTALL_PROGRAM = $(INSTALL)
+# Hard-coded into ls_.
+LS = ls
 M4 = m4
 
 bindir = $(exec_prefix)/bin
@@ -40,6 +44,11 @@ prefix = /usr/local
 
 # ---------------
 # INTERNAL MACROS
+
+all_m4flags = \
+    -D __GREP__=$(GREP) \
+    -D __LS__=$(LS) \
+    -D __SHELL__=$(SHELL) \
 
 cleanup = { rc=$$?; rm -f $@ && exit "$$rc"; }
 progs = grep_ ls_
@@ -62,7 +71,7 @@ uninstall: FORCE
 # Portably imitate .DELETE_ON_ERROR [4] because m4(1) may fail after the
 # shell creates/truncates the target.
 .m4:
-	$(M4) -D __SHELL__=$(SHELL) $< >$@ || $(cleanup)
+	$(M4) $(all_m4flags) $< >$@ || $(cleanup)
 
 # Imitate .PHONY portably [5].
 FORCE:
