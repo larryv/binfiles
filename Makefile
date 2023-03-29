@@ -36,6 +36,7 @@ INSTALL_PROGRAM = $(INSTALL)
 # Hard-coded into ls_.
 LS = ls
 M4 = m4
+SHELLCHECK = shellcheck
 
 bindir = $(exec_prefix)/bin
 exec_prefix = $(prefix)
@@ -58,6 +59,8 @@ progs = grep_ ls_
 # TARGETS
 
 all: FORCE $(progs)
+check: FORCE $(progs)
+	$(SHELLCHECK) $(SHELLCHECKFLAGS) $(progs)
 clean: FORCE
 	rm -f $(progs)
 install: FORCE $(progs) installdirs
