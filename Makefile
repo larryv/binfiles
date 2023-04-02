@@ -50,7 +50,7 @@ all_m4flags = \
     -D __GREP__=$(GREP) \
     -D __LS__=$(LS) \
     -D __SHELL__=$(SHELL) \
-
+    $(M4FLAGS)
 cleanup = { rc=$$?; rm -f $@ && exit "$$rc"; }
 progs = grep_ ls_
 
