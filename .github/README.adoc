@@ -1,0 +1,161 @@
+////
+.github/README.adoc
+-------------------
+
+SPDX-License-Identifier: CC0-1.0
+
+Written in 2023 by Lawrence Velázquez <vq@larryv.me>.
+
+To the extent possible under law, the author(s) have dedicated all
+copyright and related and neighboring rights to this software to the
+public domain worldwide.  This software is distributed without any
+warranty.
+
+You should have received a copy of the CC0 Public Domain Dedication
+along with this software.  If not, see
+<https://creativecommons.org/publicdomain/zero/1.0/>.
+////
+
+
+= binfiles
+:source-language: sh
+
+These are some utilities that are too tiny to have their own home.
+
+`grep_`:: Runs `grep --color=auto`, passing along any given arguments.
+
+`ls_`:: Runs `ls -AFh`, passing along any given arguments.  If `-A` is
+not recognized, then `-a` is used instead; other unrecognized options
+are omitted without replacement.  (Option support is tested at build
+time.)
+
+
+== Requirements
+
+:url-posix: https://pubs.opengroup.org/onlinepubs/9699919799/utilities
+:url-zsh: https://zsh.sourceforge.io
+
+* A
+https://www.in-ulm.de/~mascheck/bourne[Bourne,
+title=~sven_mascheck/ - The Traditional Bourne Shell Family]
+or
+{url-posix}/V3_chap02.html[POSIX,
+title=POSIX.1-2017 - XCU Chapter 2 ('Shell Command Language')](-ish)
+shell.  The shells I have at hand are
+https://www.gnu.org/software/bash[bash],
+http://gondor.apana.org.au/~herbert/dash[dash],
+http://www.kornshell.org[ksh93],
+http://mirbsd.de/mksh[mksh],
+https://yash.osdn.jp[yash],
+and
+{url-zsh}[zsh];
+other shells are supported on a best-effort basis.  (NB: zsh must be
+used in
+{url-zsh}/Doc/Release/Invocation.html#Compatibility[ksh or sh
+compatibility mode, title=Z Shell Manual - Section 4.2 ('Compatibility')].)
+
+* A typical Unix(-like) toolset, including:
+
+** `grep(1)` with `--color=auto`
+
+** `{url-posix}/m4.html[m4(1),
+title=POSIX.1-2017 - XCU Chapter 4 ('Utilities - m4')]`
+(for build only)
+
+** `{url-posix}/make.html[make(1),
+title=POSIX.1-2017 - XCU Chapter 4 ('Utilities - make')]`
+(for build only)
+
+* https://www.shellcheck.net[ShellCheck]
+(for `make check` only)
+
+
+== Installation and uninstallation
+
+:link-makefile: https://github.com/larryv/binfiles/blob/main/Makefile
+ifdef::env-github[:link-makefile: link:../Makefile]
+
+Run these commands from the directory containing
+`{link-makefile}[the makefile]`.  (Using `make -C` is fine.)  If
+necessary, acquire privileges with
+`https://www.sudo.ws[sudo(1)]`,
+`https://man.openbsd.org/doas[doas(1),
+title=OpenBSD manual pages - doas(1)]`,
+etc.
+
+* To install under `/usr/local` (the default) or some other path:
++
+--
+[source]
+make install
+
+[source]
+make prefix=/some/other/path install
+--
+
+* To uninstall from `/usr/local` (the default) or some other path:
++
+--
+[source]
+make uninstall
+
+[source]
+make prefix=/some/other/path uninstall
+--
+
+* To run basic tests:
++
+[source]
+make check
+
+* To clean up:
++
+[source]
+make clean
+
+:title-make-man: GNU Make Manual
+:title-make-man-cmdvars: {title-make-man} - \
+    Variables for Specifying Commands
+:title-make-man-dirvars: {title-make-man} - \
+    Variables for Installation Directories
+:url-make-man: https://www.gnu.org/software/make/manual/html_node
+:url-make-man-cmdvars: {url-make-man}/Command-Variables.html
+:url-make-man-dirvars: {url-make-man}/Directory-Variables.html
+
+The following `make(1)` macros are available for modifying the build
+process (as demonstrated above with `prefix`).  Refer to
+{link-makefile}[the makefile] for their default values.
+
+* `{url-make-man-dirvars}#index-bindir[bindir,
+title={title-make-man-dirvars} - bindir]`,
+`{url-make-man}/DESTDIR.html[DESTDIR,
+title={title-make-man} - DESTDIR: Support for Staged Installs]`,
+`{url-make-man-dirvars}#index-exec_005fprefix[exec_prefix,
+title={title-make-man-dirvars} - exec_prefix]`,
+and
+`{url-make-man-dirvars}#index-prefix[prefix,
+title={title-make-man-dirvars} - prefix]`
+are installation directories.
+
+* `GREP` is the `grep(1)` command hard-coded into `grep_`.
+
+* `LS` is the `ls(1)` command hard-coded into `ls_`.
+
+* `SHELL` is the shell invoked by `make(1)` and hard-coded into the
+shebangs of shell scripts.
+
+* `{url-make-man-cmdvars}[INSTALL,
+title={title-make-man-cmdvars}]`,
+`{url-make-man-cmdvars}[INSTALL_PROGRAM,
+title={title-make-man-cmdvars}]`,
+`M4` (with `M4FLAGS`) and `SHELLCHECK` (with `SHELLCHECKFLAGS`) are
+commands invoked by the build process.
+
+
+== Legal
+
+:link-cc0: https://creativecommons.org/publicdomain/zero/1.0
+ifdef::env-github[:link-cc0: link:../COPYING.txt]
+
+Unless otherwise noted, this work is published from the United States of
+America using the {link-cc0}[CC0 1.0 Universal Public Domain Dedication].
