@@ -36,14 +36,14 @@ time.)
 :url-zsh: https://zsh.sourceforge.io
 
 * A
-https://www.in-ulm.de/~mascheck/bourne[Bourne,
+https://www.in-ulm.de/~mascheck/bourne/[Bourne,
 title=~sven_mascheck/ - The Traditional Bourne Shell Family]
 or
 {url-posix}/V3_chap02.html[POSIX,
 title=POSIX.1-2017 - XCU Chapter 2 ('Shell Command Language')](-ish)
 shell.  The shells I have at hand are
-https://www.gnu.org/software/bash[bash],
-http://gondor.apana.org.au/~herbert/dash[dash],
+https://www.gnu.org/software/bash/[bash],
+http://gondor.apana.org.au/~herbert/dash/[dash],
 http://www.kornshell.org[ksh93],
 http://mirbsd.de/mksh[mksh],
 https://yash.osdn.jp[yash],
@@ -154,7 +154,7 @@ commands invoked by the build process.
 
 == Legal
 
-:link-cc0: https://creativecommons.org/publicdomain/zero/1.0
+:link-cc0: https://creativecommons.org/publicdomain/zero/1.0/
 ifdef::env-github[:link-cc0: link:../COPYING.txt]
 
 Unless otherwise noted, this work is published from the United States of

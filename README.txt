@@ -88,10 +88,10 @@ America using the CC0 1.0 Universal Public Domain Dedication [19].
 References
 ----------
 
- 1. https://www.in-ulm.de/~mascheck/bourne
+ 1. https://www.in-ulm.de/~mascheck/bourne/
  2. https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html
- 3. https://www.gnu.org/software/bash
- 4. http://gondor.apana.org.au/~herbert/dash
+ 3. https://www.gnu.org/software/bash/
+ 4. http://gondor.apana.org.au/~herbert/dash/
  5. http://www.kornshell.org
  6. http://mirbsd.de/mksh
  7. https://yash.osdn.jp
@@ -106,7 +106,7 @@ References
 16. https://www.gnu.org/software/make/manual/html_node/Directory-Variables.html
 17. https://www.gnu.org/software/make/manual/html_node/DESTDIR.html
 18. https://www.gnu.org/software/make/manual/html_node/Command-Variables.html
-19. https://creativecommons.org/publicdomain/zero/1.0
+19. https://creativecommons.org/publicdomain/zero/1.0/
 
 
 SPDX-License-Identifier: CC0-1.0
