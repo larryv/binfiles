@@ -41,7 +41,7 @@ https://www.in-ulm.de/~mascheck/bourne/[Bourne,
 title=~sven_mascheck/ - The Traditional Bourne Shell Family]
 or
 {url-posix}/V3_chap02.html[POSIX,
-title=POSIX.1-2017 - XCU Chapter 2 ('Shell Command Language')](-ish)
+title=POSIX.1-2017 - XCU Chapter 2 (Shell Command Language)](-ish)
 shell.  The shells I have at hand are
 https://www.gnu.org/software/bash/[bash],
 http://gondor.apana.org.au/~herbert/dash/[dash],
@@ -53,18 +53,18 @@ and
 other shells are supported on a best-effort basis.  (NB: zsh must be
 used in
 {url-zsh}/Doc/Release/Invocation.html#Compatibility[ksh or sh
-compatibility mode, title=Z Shell Manual - Section 4.2 ('Compatibility')].)
+compatibility mode, title=Z Shell Manual - Section 4.2 (Compatibility)].)
 
 * A typical Unix(-like) toolset, including:
 
 ** `grep(1)` with `--color=auto`
 
 ** `{url-posix}/m4.html[m4(1),
-title=POSIX.1-2017 - XCU Chapter 4 ('Utilities - m4')]`
+title=POSIX.1-2017 - XCU Chapter 4 (Utilities - m4)]`
 (for build only)
 
 ** `{url-posix}/make.html[make(1),
-title=POSIX.1-2017 - XCU Chapter 4 ('Utilities - make')]`
+title=POSIX.1-2017 - XCU Chapter 4 (Utilities - make)]`
 (for build only)
 
 * https://www.shellcheck.net[ShellCheck]
