@@ -80,7 +80,7 @@ ifndef::env-github[]
 endif::[]
 
 Run these commands from the directory containing
-`{link-makefile}[the makefile]`.  (Using `make -C` is fine.)  If
+{link-makefile}[the makefile].  (Using `make -C` is fine.)  If
 necessary, acquire privileges with
 `https://www.sudo.ws[sudo(1)]`,
 `https://man.openbsd.org/doas[doas(1),
