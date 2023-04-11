@@ -80,31 +80,32 @@ ifndef::env-github[]
 endif::[]
 
 Run these commands from the directory containing
-{link-makefile}[the makefile].  (Using `make -C` is fine.)  If
-necessary, acquire privileges with
-`https://www.sudo.ws[sudo(1)]`,
+{link-makefile}[the makefile] (using `make -C` is fine).  Feel free
+to replace
+`https://www.sudo.ws[sudo(1)]`
+with another tool (e.g.,
 `https://man.openbsd.org/doas[doas(1),
-title=OpenBSD manual pages - doas(1)]`,
-etc.
+title=OpenBSD manual pages - doas(1)]`)
+or omit it entirely if elevated privileges are not desired.
 
 * To install under `/usr/local` (the default) or some other path:
 +
 --
 [source]
-make install
+make && sudo make install
 
 [source]
-make prefix=/some/other/path install
+make && sudo make prefix=/some/other/path install
 --
 
 * To uninstall from `/usr/local` (the default) or some other path:
 +
 --
 [source]
-make uninstall
+sudo make uninstall
 
 [source]
-make prefix=/some/other/path uninstall
+sudo make prefix=/some/other/path uninstall
 --
 
 * To run basic tests:

@@ -35,21 +35,22 @@ Requirements
 Installation and uninstallation
 -------------------------------
 
-Run these commands from the directory containing the makefile [13].
-(Using `make -C` is fine.)  If necessary, acquire privileges with
-sudo(1) [14], doas(1) [15], etc.
+Run these commands from the directory containing the makefile [13]
+(using `make -C` is fine).  Feel free to replace sudo(1) [14] with
+another tool (e.g., doas(1) [15]) or omit it entirely if elevated
+privileges are not desired.
 
 -   To install under `/usr/local` (the default) or some other path:
 
-        make install
+        make && sudo make install
 
-        make prefix=/some/other/path install
+        make && sudo make prefix=/some/other/path install
 
 -   To uninstall from `/usr/local` (the default) or some other path:
 
-        make uninstall
+        sudo make uninstall
 
-        make prefix=/some/other/path uninstall
+        sudo make prefix=/some/other/path uninstall
 
 -   To run basic tests:
 
