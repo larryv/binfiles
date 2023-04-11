@@ -16,20 +16,20 @@ ls_
 Requirements
 ------------
 
--   A Bourne [1] or POSIX(-ish) [2] shell.  The shells I have at hand
+  - A Bourne [1] or POSIX(-ish) [2] shell.  The shells I have at hand
     are bash [3], dash [4], ksh93 [5], mksh [6], yash [7], and zsh [8];
     other shells are supported on a best-effort basis.  (NB: zsh must be
     used in ksh or sh compatibility mode [9].)
 
--   A typical Unix(-like) toolset, including:
+  - A typical Unix(-like) toolset, including:
 
-    -   grep(1) with `--color=auto`
+      - grep(1) with `--color=auto`
 
-    -   m4(1) [10] (for build only)
+      - m4(1) [10] (for build only)
 
-    -   make(1) [11] (for build only)
+      - make(1) [11] (for build only)
 
--   ShellCheck [12] (for `make check` only)
+  - ShellCheck [12] (for `make check` only)
 
 
 Installation and uninstallation
@@ -40,23 +40,23 @@ Run these commands from the directory containing the makefile [13]
 another tool (e.g., doas(1) [15]) or omit it entirely if elevated
 privileges are not desired.
 
--   To install under `/usr/local` (the default) or some other path:
+  - To install under `/usr/local` (the default) or some other path:
 
         make && sudo make install
 
         make && sudo make prefix=/some/other/path install
 
--   To uninstall from `/usr/local` (the default) or some other path:
+  - To uninstall from `/usr/local` (the default) or some other path:
 
         sudo make uninstall
 
         sudo make prefix=/some/other/path uninstall
 
--   To run basic tests:
+  - To run basic tests:
 
         make check
 
--   To clean up:
+  - To clean up:
 
         make clean
 
@@ -64,17 +64,17 @@ The following make(1) macros are available for modifying the build
 process (as demonstrated above with `prefix`).  Refer to the makefile
 for their default values.
 
--   `bindir` [16], `DESTDIR` [17], `exec_prefix` [16], and `prefix` [16]
+  - `bindir` [16], `DESTDIR` [17], `exec_prefix` [16], and `prefix` [16]
     are installation directories.
 
--   `GREP` is the grep(1) command hard-coded into grep_.
+  - `GREP` is the grep(1) command hard-coded into grep_.
 
--   `LS` is the ls(1) command hard-coded into ls_.
+  - `LS` is the ls(1) command hard-coded into ls_.
 
--   `SHELL` is the shell invoked by make(1) and hard-coded into the
+  - `SHELL` is the shell invoked by make(1) and hard-coded into the
     shebangs of shell scripts.
 
--   `INSTALL` [18], `INSTALL_PROGRAM` [18], `M4` (with `M4FLAGS`) and
+  - `INSTALL` [18], `INSTALL_PROGRAM` [18], `M4` (with `M4FLAGS`) and
     `SHELLCHECK` (with `SHELLCHECKFLAGS`) are commands invoked by the
     build process.
 
