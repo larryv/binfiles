@@ -40,13 +40,13 @@ Run these commands from the directory containing the makefile [13]
 another tool (e.g., doas(1) [15]) or omit it entirely if elevated
 privileges are not desired.
 
-  - To install under `/usr/local` (the default) or some other path:
+  - To install under /usr/local (the default) or some other path:
 
         make && sudo make install
 
         make && sudo make prefix=/some/other/path install
 
-  - To uninstall from `/usr/local` (the default) or some other path:
+  - To uninstall from /usr/local (the default) or some other path:
 
         sudo make uninstall
 
@@ -87,7 +87,7 @@ copyright and related and neighboring rights to this software to the
 public domain worldwide.  This software is published from the United
 States of America and distributed without any warranty.
 
-Refer to `install-sh` for its separate licensing terms.
+Refer to install-sh for its separate licensing terms.
 
 
 References
