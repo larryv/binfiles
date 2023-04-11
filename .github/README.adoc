@@ -22,10 +22,11 @@ along with this software.  If not, see
 
 These are some utilities that are too tiny to have their own home.
 
-`grep_`:: Runs `grep --color=auto`, passing along any given arguments.
+`grep_`:: Runs `grep{nbsp}--color=auto`, passing along any given
+arguments.
 
-`ls_`:: Runs `ls -AFh`, passing along any given arguments.  If `-A` is
-not recognized, then `-a` is used instead; other unrecognized options
+`ls_`:: Runs `ls{nbsp}-AFh`, passing along any given arguments.  If `-A`
+is not recognized, then `-a` is used instead; other unrecognized options
 are omitted without replacement.  (Option support is tested at build
 time.)
 
@@ -67,7 +68,7 @@ title=POSIX.1-2017 - XCU Chapter 4 ('Utilities - make')]`
 (for build only)
 
 * https://www.shellcheck.net[ShellCheck]
-(for `make check` only)
+(for `make{nbsp}check` only)
 
 
 == Installation and uninstallation
@@ -80,7 +81,7 @@ ifndef::env-github[]
 endif::[]
 
 Run these commands from the directory containing
-{link-makefile}[the makefile] (using `make -C` is fine).  Feel free
+{link-makefile}[the makefile] (using `make{nbsp}-C` is fine).  Feel free
 to replace
 `https://www.sudo.ws[sudo(1)]`
 with another tool (e.g.,
