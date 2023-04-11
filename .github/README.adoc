@@ -158,12 +158,22 @@ commands invoked by the build process.
 
 == Legal
 
+:title-cc0: CC0 1.0 Universal Public Domain Dedication
 ifdef::env-github[]
 :link-cc0: link:../COPYING.txt
 endif::[]
 ifndef::env-github[]
 :link-cc0: https://creativecommons.org/publicdomain/zero/1.0/
+:title-cc0: Creative Commons - {title-cc0}
 endif::[]
 
-Unless otherwise noted, this work is published from the United States of
-America using the {link-cc0}[CC0 1.0 Universal Public Domain Dedication].
+To the extent possible under law, the author has
+{link-cc0}[dedicated, title={title-cc0}]
+all copyright and related and neighboring rights to this software to the
+public domain worldwide.  This software is published from the United
+States of America and distributed without any warranty.
+
+Refer to
+ifdef::env-github[`link:../install-sh[install-sh]`]
+ifndef::env-github[`install-sh`]
+for its separate licensing terms.
