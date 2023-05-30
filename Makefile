@@ -75,6 +75,7 @@ uninstall: FORCE
 # shell creates/truncates the target.
 .m4:
 	$(M4) $(all_m4flags) $< >$@ || $(cleanup)
+	-chmod +x $@
 
 # Imitate .PHONY portably [5].
 FORCE:
