@@ -67,7 +67,17 @@ check: FORCE $(bin_SCRIPTS)
 clean: FORCE
 	rm -f $(bin_SCRIPTS)
 
+# If BAR/FOO is a directory or a symlink to one, then the behavior of
+# `install FOO BAR` varies *significantly* among implementations.
+# Ensure consistent results by detecting this situation and bailing out.
 install: FORCE all installdirs
+	@for f in $(bin_SCRIPTS); do \
+    p=$(DESTDIR)$(bindir)/$$f; \
+    if test -d "$$p"; then \
+        printf 'will not overwrite directory: %s\n' "$$p" >&2; \
+        exit 1; \
+    fi; \
+done
 	$(INSTALL_PROGRAM) $(bin_SCRIPTS) $(DESTDIR)$(bindir)
 
 # Depending on "install" would overwrite an existing installation.
