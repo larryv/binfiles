@@ -20,8 +20,10 @@
 .SUFFIXES: .m4
 
 
-# ------------------
-# USER-FACING MACROS
+# ---------------
+# "PUBLIC" MACROS
+
+# Remember to update the READMEs after adding new macros here.
 
 # Hard-coded into the shebangs of shell scripts.
 SHELL = /bin/sh
@@ -40,8 +42,8 @@ exec_prefix = $(prefix)
 prefix = /usr/local
 
 
-# ---------------
-# INTERNAL MACROS
+# ----------------
+# "PRIVATE" MACROS
 
 all_m4flags = \
     -D __GREP__=$(GREP) \
@@ -52,21 +54,30 @@ cleanup = { rc=$$?; rm -f $@ && exit "$$rc"; }
 progs = grep_ ls_
 
 
-# -------
-# TARGETS
+# --------------
+# "PUBLIC" RULES
 
 all: FORCE $(progs)
+
 check: FORCE $(progs)
 	$(SHELLCHECK) $(SHELLCHECKFLAGS) $(progs)
+
 clean: FORCE
 	rm -f $(progs)
+
 install: FORCE $(progs) installdirs
 	$(INSTALL_PROGRAM) $(progs) $(DESTDIR)$(bindir)
+
 installdirs: FORCE
 	$(INSTALL) -d $(DESTDIR)$(bindir)
+
 # Clear CDPATH to preclude unexpected cd(1) behavior [1].
 uninstall: FORCE
 	CDPATH= cd $(DESTDIR)$(bindir) && rm -f $(progs)
+
+
+# ---------------
+# "PRIVATE" RULES
 
 # Portably imitate .DELETE_ON_ERROR [2] because m4(1) may fail after the
 # shell creates/truncates the target.
