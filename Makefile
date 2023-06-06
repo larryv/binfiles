@@ -45,12 +45,12 @@ prefix = /usr/local
 # ----------------
 # "PRIVATE" MACROS
 
-all_m4flags = \
+do_cleanup = { rc=$$?; rm -f $@ && exit "$$rc"; }
+do_m4 = $(M4) \
     -D __GREP__=$(GREP) \
     -D __LS__=$(LS) \
     -D __SHELL__=$(SHELL) \
     $(M4FLAGS)
-do_cleanup = { rc=$$?; rm -f $@ && exit "$$rc"; }
 bin_SCRIPTS = grep_ ls_
 
 
@@ -85,7 +85,7 @@ FORCE:
 # Portably imitate .DELETE_ON_ERROR [3] because m4(1) may fail after the
 # shell creates/truncates the target.
 .m4:
-	$(M4) $(all_m4flags) $< >$@ || $(do_cleanup)
+	$(do_m4) $< >$@ || $(do_cleanup)
 	-chmod +x $@
 
 
