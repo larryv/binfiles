@@ -70,6 +70,11 @@ clean: FORCE
 install: FORCE all installdirs
 	$(INSTALL_PROGRAM) $(bin_SCRIPTS) $(DESTDIR)$(bindir)
 
+# Depending on "install" would overwrite an existing installation.
+installcheck: FORCE
+	CDPATH= cd $(DESTDIR)$(bindir) \
+    && $(SHELLCHECK) $(SHELLCHECKFLAGS) $(bin_SCRIPTS)
+
 installdirs: FORCE
 	$(INSTALL) -d $(DESTDIR)$(bindir)
 

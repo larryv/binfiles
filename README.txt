@@ -55,6 +55,7 @@ privileges are not desired.
   - To run basic tests:
 
         make check
+        make installcheck
 
   - To clean up:
 

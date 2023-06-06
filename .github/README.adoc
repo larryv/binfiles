@@ -113,6 +113,7 @@ sudo make prefix=/some/other/path uninstall
 +
 [source]
 make check
+make installcheck
 
 * To clean up:
 +
