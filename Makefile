@@ -46,11 +46,12 @@ prefix = /usr/local
 # "PRIVATE" MACROS
 
 do_cleanup = { rc=$$?; rm -f $@ && exit "$$rc"; }
+# Insert M4FLAGS first to accommodate SysV options that must precede -D.
 do_m4 = $(M4) \
+	$(M4FLAGS) \
 	-D __GREP__=$(GREP) \
 	-D __LS__=$(LS) \
-	-D __SHELL__=$(SHELL) \
-	$(M4FLAGS)
+	-D __SHELL__=$(SHELL)
 bin_SCRIPTS = grep_ ls_
 
 
