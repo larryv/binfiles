@@ -48,6 +48,6 @@ IFS=$sp$tab$lf
 # Work around undesirable "$@" behavior in ancient shells.
 ifdef([__GREP__], [], [define([__GREP__], [grep])])dnl
 case $# in
-    0) exec defn([__GREP__]) --color=auto ;;
-    *) exec defn([__GREP__]) --color=auto "$@" ;;
+	0) exec defn([__GREP__]) --color=auto ;;
+	*) exec defn([__GREP__]) --color=auto "$@" ;;
 esac

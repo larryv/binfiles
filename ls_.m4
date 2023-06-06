@@ -55,6 +55,6 @@ IFS=$sp$tab$lf
 
 # Work around undesirable "$@" behavior in ancient shells.
 case $# in
-    0) exec defn([__LS__]) -defn([opts]) ;;
-    *) exec defn([__LS__]) -defn([opts]) "$@" ;;
+	0) exec defn([__LS__]) -defn([opts]) ;;
+	*) exec defn([__LS__]) -defn([opts]) "$@" ;;
 esac
