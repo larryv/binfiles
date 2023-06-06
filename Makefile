@@ -50,30 +50,30 @@ all_m4flags = \
     -D __LS__=$(LS) \
     -D __SHELL__=$(SHELL) \
     $(M4FLAGS)
-cleanup = { rc=$$?; rm -f $@ && exit "$$rc"; }
-progs = grep_ ls_
+do_cleanup = { rc=$$?; rm -f $@ && exit "$$rc"; }
+bin_SCRIPTS = grep_ ls_
 
 
 # --------------
 # "PUBLIC" RULES
 
-all: FORCE $(progs)
+all: FORCE $(bin_SCRIPTS)
 
-check: FORCE $(progs)
-	$(SHELLCHECK) $(SHELLCHECKFLAGS) $(progs)
+check: FORCE $(bin_SCRIPTS)
+	$(SHELLCHECK) $(SHELLCHECKFLAGS) $(bin_SCRIPTS)
 
 clean: FORCE
-	rm -f $(progs)
+	rm -f $(bin_SCRIPTS)
 
 install: FORCE $(progs) installdirs
-	$(INSTALL_PROGRAM) $(progs) $(DESTDIR)$(bindir)
+	$(INSTALL_PROGRAM) $(bin_SCRIPTS) $(DESTDIR)$(bindir)
 
 installdirs: FORCE
 	$(INSTALL) -d $(DESTDIR)$(bindir)
 
 # Clear CDPATH to preclude unexpected cd(1) behavior [1].
 uninstall: FORCE
-	CDPATH= cd $(DESTDIR)$(bindir) && rm -f $(progs)
+	CDPATH= cd $(DESTDIR)$(bindir) && rm -f $(bin_SCRIPTS)
 
 
 # ---------------
@@ -85,7 +85,7 @@ FORCE:
 # Portably imitate .DELETE_ON_ERROR [3] because m4(1) may fail after the
 # shell creates/truncates the target.
 .m4:
-	$(M4) $(all_m4flags) $< >$@ || $(cleanup)
+	$(M4) $(all_m4flags) $< >$@ || $(do_cleanup)
 	-chmod +x $@
 
 
