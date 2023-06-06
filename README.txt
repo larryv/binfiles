@@ -71,8 +71,9 @@ for their default values.
 
   - `LS` is the ls(1) command hard-coded into ls_.
 
-  - `SHELL` is the shell invoked by make(1) and hard-coded into the
-    shebangs of shell scripts.
+  - `SHELL` is the shell hard-coded into the shebangs of shell scripts.
+    (For some make(1) implementations, it is also the shell used to
+    execute command lines.)
 
   - `INSTALL` [18], `INSTALL_PROGRAM` [18], `M4` (with `M4FLAGS`) and
     `SHELLCHECK` (with `SHELLCHECKFLAGS`) are commands invoked by the

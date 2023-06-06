@@ -28,10 +28,7 @@ SHELL = /bin/sh
 
 # Hard-coded into grep_.
 GREP = grep
-# Reduce the number of shells in play by invoking install-sh with
-# the same shell that make(1) uses.  Use "./install-sh" instead of
-# "install-sh" to preclude inadvertent PATH searches [1][2].
-INSTALL = $(SHELL) ./install-sh
+INSTALL = ./install-sh
 INSTALL_PROGRAM = $(INSTALL)
 # Hard-coded into ls_.
 LS = ls
@@ -67,25 +64,23 @@ install: FORCE $(progs) installdirs
 	$(INSTALL_PROGRAM) $(progs) $(DESTDIR)$(bindir)
 installdirs: FORCE
 	$(INSTALL) -d $(DESTDIR)$(bindir)
-# Clear CDPATH to preclude unexpected cd(1) behavior [3].
+# Clear CDPATH to preclude unexpected cd(1) behavior [1].
 uninstall: FORCE
 	CDPATH= cd $(DESTDIR)$(bindir) && rm -f $(progs)
 
-# Portably imitate .DELETE_ON_ERROR [4] because m4(1) may fail after the
+# Portably imitate .DELETE_ON_ERROR [2] because m4(1) may fail after the
 # shell creates/truncates the target.
 .m4:
 	$(M4) $(all_m4flags) $< >$@ || $(cleanup)
 	-chmod +x $@
 
-# Imitate .PHONY portably [5].
+# Imitate .PHONY portably [3].
 FORCE:
 
 
 # ----------
 # REFERENCES
 #
-#  1. https://www.gnu.org/software/autoconf/manual/autoconf-2.71/html_node/Invoking-the-Shell.html
-#  2. https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sh.html
-#  3. https://pubs.opengroup.org/onlinepubs/9699919799/utilities/cd.html
-#  4. https://www.gnu.org/software/make/manual/html_node/Errors.html
-#  5. https://www.gnu.org/software/make/manual/html_node/Force-Targets
+#  1. https://pubs.opengroup.org/onlinepubs/9699919799/utilities/cd.html
+#  2. https://www.gnu.org/software/make/manual/html_node/Errors.html
+#  3. https://www.gnu.org/software/make/manual/html_node/Force-Targets
