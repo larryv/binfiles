@@ -36,6 +36,7 @@ INSTALL_PROGRAM = $(INSTALL)
 LS = ls
 M4 = m4
 SHELLCHECK = shellcheck
+SHELLCHECKFLAGS = --norc
 
 bindir = $(exec_prefix)/bin
 exec_prefix = $(prefix)
