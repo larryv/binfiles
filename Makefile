@@ -67,7 +67,7 @@ check: FORCE $(bin_SCRIPTS)
 clean: FORCE
 	rm -f $(bin_SCRIPTS)
 
-install: FORCE $(progs) installdirs
+install: FORCE all installdirs
 	$(INSTALL_PROGRAM) $(bin_SCRIPTS) $(DESTDIR)$(bindir)
 
 installdirs: FORCE
