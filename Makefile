@@ -79,19 +79,19 @@ uninstall: FORCE
 # ---------------
 # "PRIVATE" RULES
 
-# Portably imitate .DELETE_ON_ERROR [2] because m4(1) may fail after the
+# Imitate .PHONY portably [2].
+FORCE:
+
+# Portably imitate .DELETE_ON_ERROR [3] because m4(1) may fail after the
 # shell creates/truncates the target.
 .m4:
 	$(M4) $(all_m4flags) $< >$@ || $(cleanup)
 	-chmod +x $@
-
-# Imitate .PHONY portably [3].
-FORCE:
 
 
 # ----------
 # REFERENCES
 #
 #  1. https://pubs.opengroup.org/onlinepubs/9699919799/utilities/cd.html
-#  2. https://www.gnu.org/software/make/manual/html_node/Errors.html
-#  3. https://www.gnu.org/software/make/manual/html_node/Force-Targets
+#  2. https://www.gnu.org/software/make/manual/html_node/Force-Targets
+#  3. https://www.gnu.org/software/make/manual/html_node/Errors.html
