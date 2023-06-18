@@ -71,9 +71,11 @@ clean: FORCE
 # `install FOO BAR` varies *significantly* among implementations.
 # Ensure consistent results by detecting this situation and bailing out.
 install: FORCE all installdirs
-	@for f in $(bin_SCRIPTS); do \
+	@for f in $(bin_SCRIPTS); \
+do \
     p=$(DESTDIR)$(bindir)/$$f; \
-    if test -d "$$p"; then \
+    if test -d "$$p"; \
+    then \
         printf 'will not overwrite directory: %s\n' "$$p" >&2; \
         exit 1; \
     fi; \
