@@ -46,6 +46,8 @@ prefix = /usr/local
 # ----------------
 # "PRIVATE" MACROS
 
+# Clear CDPATH to preclude unexpected cd(1) behavior [1].
+do_cd = CDPATH= cd
 do_cleanup = { rc=$$?; rm -f $@ && exit "$$rc"; }
 # Insert M4FLAGS first to accommodate SysV options that must precede -D.
 do_m4 = $(M4) \
@@ -84,15 +86,14 @@ done
 
 # Depending on "install" would overwrite an existing installation.
 installcheck: FORCE
-	CDPATH= cd $(DESTDIR)$(bindir) \
+	$(do_cd) $(DESTDIR)$(bindir) \
     && $(SHELLCHECK) $(SHELLCHECKFLAGS) $(bin_SCRIPTS)
 
 installdirs: FORCE
 	$(INSTALL) -d $(DESTDIR)$(bindir)
 
-# Clear CDPATH to preclude unexpected cd(1) behavior [1].
 uninstall: FORCE
-	CDPATH= cd $(DESTDIR)$(bindir) && rm -f $(bin_SCRIPTS)
+	$(do_cd) $(DESTDIR)$(bindir) && rm -f $(bin_SCRIPTS)
 
 
 # ---------------
